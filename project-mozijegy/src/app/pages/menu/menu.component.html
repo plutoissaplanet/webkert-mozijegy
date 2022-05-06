@@ -1,0 +1,14 @@
+<div id="menu">
+    <div id="buttons">
+        <button id="mainButton" mat-button [routerLink]="['/']">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        </button>
+        <button id="mainButton" [routerLink]="['/films']" mat-button >Filmek</button>
+
+        <button id="mainButton" mat-button [matMenuTriggerFor]="menu2">Foglalás</button>
+        <mat-menu #menu2="matMenu" yPosition="below">
+            <button id="nestedButton" [routerLink]="['/reservation']" mat-menu-item>Jegyfoglalás</button>
+            <button id="nestedButton" [routerLink]="['/reserved']" mat-menu-item >Foglalás megtekintése</button>
+        </mat-menu>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<body>
+    <h1> Elfelejtetted a foglalásod?</h1>
+    <h3>Sebaj! Könnyen lekérdezheted eddigi foglalásaidat a neved és telefonszáod megadásával.</h3>
+
+    <div class="span">
+    <span><label for="name">Név: </label><input type="text" [formControl]='name'/></span>
+    <br>
+    <span><label for="phone">Telefonszám: </label><input type="text"  [formControl]='phonenumber'/></span>
+        <br>
+    <span>
+        <button (click)="getReservation()">Lekérdezés!</button>
+    </span>
+    </div>
+
+</body>
+
+
