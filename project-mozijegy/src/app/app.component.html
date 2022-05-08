@@ -1,4 +1,35 @@
 
-<app-menu></app-menu> 
+<mat-sidenav-container>
+    <mat-sidenav  #sidenav>
+        <app-menu (selectedPage)="changePage($event)" [currentPage]="page" (onCloseSidenav)="onClose($event,sidenav)"></app-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="white">
+            <div fxHide.gt-xs>
+                <button mat-icon-button (click)="onToggleSidenav(sidenav)">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>    
+    
+            <div class="menubutton" fxFlex fxLayout id="buttons" fxHide.xs fxLayoutAlign="flex-end">
+                <ul fxLayout  fxHide.xs class="navigation">
+                    <button id="mainButton" mat-button [routerLink]="['/']">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+                    </button>
+                    <button id="mainButton" [routerLink]="['/films']" mat-button >Filmek</button>
+                    <button id="mainButton" mat-button [matMenuTriggerFor]="menu2">Foglalás</button>
+                    <mat-menu #menu2="matMenu" yPosition="below">
+                        <button id="nestedButton" [routerLink]="['/reservation']" mat-menu-item>Jegyfoglalás</button>
+                        <button id="nestedButton" [routerLink]="['/reserved']" mat-menu-item >Foglalás megtekintése</button>
+                    </mat-menu>
+                </ul>
+            </div>
+        
+        
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+        <div class ="filler"></div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 
-<router-outlet></router-outlet>
+

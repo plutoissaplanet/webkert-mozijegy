@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tayqtg-mozijegy": {
+      "hosting": {
+        "project-mozijegy": [
+          "tayqtg-mozijegy"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tayqtg-mozijegy"
+  }
+}

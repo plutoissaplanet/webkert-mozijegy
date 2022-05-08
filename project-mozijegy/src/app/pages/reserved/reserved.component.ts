@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-reserved',
@@ -9,20 +10,25 @@ import { Router } from '@angular/router';
 })
 export class ReservedComponent implements OnInit {
 
-  name= new FormControl('');
-  phonenumber= new FormControl('');
+  email= new FormControl('');
+  password= new FormControl('');
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private AuthService: AuthService) { }
 
   ngOnInit(): void {
   }
-
-  getReservation(){
-    if (this.name.value==='Polanek Eszter' && this.phonenumber.value==='citromospite'){
-      this.router.navigateByUrl('/main');
-    } else {
-      console.error('Valami incorrect');
+    async getTicket(){
+      this.AuthService.lekerdezes(this.email.value, this.password.value).then(cred => {
+        console.log(cred);
+        this.router.navigateByUrl('/showreserved');
+      })
     }
-  }
+  //getReservation(){
+  //  if (this.name.value==='Polanek Eszter' && this.password.value==='citromospite'){
+  //    this.router.navigateByUrl('/main');
+  //  } else {
+  //    console.error('Valami incorrect');
+  //  }
+  //}
 
 }

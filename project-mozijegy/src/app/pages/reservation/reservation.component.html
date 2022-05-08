@@ -1,18 +1,65 @@
 <body>
     <h1 [ngStyle]="{'padding-top': '10px'}">Üdvözöljük a foglalás oldalon!</h1>
 
-    <mat-tab-group class="tabgroup">
+
+    <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()" >
+      <mat-form-field  appearance="fill">
+        <mat-label>Email: </mat-label>
+        <input matNativeControl matInput type="text" formControlName="email" placeholder="valami@email.com" >
+      </mat-form-field> <br>
+
+      <div formGroupName="name">
+          <mat-form-field  appearance="fill">
+            <mat-label>Keresztnév: </mat-label>
+            <input matInput formControlName="firstname" type="text" placeholder="Luke" >
+          </mat-form-field> <br>
+          <mat-form-field  appearance="fill">
+            <mat-label>Vezetéknév: </mat-label>
+            <input matInput formControlName="lastname" type="text" placeholder="Skywalker" >
+          </mat-form-field><br>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select  formControlName="movies"  [(value)]="selected">
+          <mat-option>...</mat-option>
+          <mat-option value="1">Legendás Állatok: Dumbledore Titkai</mat-option>
+          <mat-option value="2">Avengers: Infinity War</mat-option>
+          <mat-option value="3">Star Wars: Force Awakens</mat-option>
+          <mat-option value="4">Pókember: Nincs Hazaút</mat-option>
+          <mat-option value="5">Rogue One: A Star Wars Story</mat-option>
+          <mat-option value="6">Doctor strange az Őrület Multiverzumábans</mat-option>
+        </mat-select>
+        </mat-form-field> 
+        <br>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Telefonszám: </mat-label>
+        <input matInput formControlName="phonenumber" placeholder="30258963" >
+      </mat-form-field><br>
+      <mat-form-field  appearance="fill">
+        <mat-label>6 karakteres foglalási kód: </mat-label>
+        <input matInput formControlName="password"  placeholder="6 betűs legyen" >
+      </mat-form-field><br>
+      <section >
+        <mat-checkbox >Elfogadom a nem létező feltételeket!</mat-checkbox>
+      </section>
+      <div>
+        <button type="submit"  mat-flat-button>Foglalás!</button>
+      </div>
+      </form>
+   <!-- <mat-tab-group class="tabgroup">
 
 
         <mat-tab label="Válaszd ki a filmet!">
           <form [formGroup]="movie" (ngSubmit)="onSubmit()">
             <mat-radio-group formControlName="movies" aria-label="Select an option">
-                <mat-radio-button value="1">Legendás Állatok: Dumbledore Titkai</mat-radio-button><br>
-                <mat-radio-button value="2">Doctor Strange az Őrület Multiverzumában</mat-radio-button><br>
-                <mat-radio-button value="3">Star Wars: Ébredő Erő</mat-radio-button><br>
-                <mat-radio-button value="4">Rogue One: A Star Wars Story</mat-radio-button><br>
-                <mat-radio-button value="5">Pókember: Nincs Hazaút</mat-radio-button><br>
-                <mat-radio-button value="6">Végtelen Háború</mat-radio-button><br>                
+                <mat-radio-button type="number" value="1">Legendás Állatok: Dumbledore Titkai</mat-radio-button><br>
+                <mat-radio-button type="number" value="2">Doctor Strange az Őrület Multiverzumában</mat-radio-button><br>
+                <mat-radio-button type="number" value="3">Star Wars: Ébredő Erő</mat-radio-button><br>
+                <mat-radio-button type="number" value="4">Rogue One: A Star Wars Story</mat-radio-button><br>
+                <mat-radio-button type="number" value="5">Pókember: Nincs Hazaút</mat-radio-button><br>
+                <mat-radio-button type="number" value="6">Végtelen Háború</mat-radio-button><br>                
               </mat-radio-group>
           
             </form>
@@ -20,21 +67,21 @@
 
 
         <mat-tab label="Válaszd ki az időpontot!">
-          <form [formGroup]="timeForm" (ngSubmit)="onSubmit()">
+          <form (ngSubmit)="onSubmit()">
           
             <mat-form-field  class="example-full-width" appearance="fill">
               <mat-label>Choose a date</mat-label>
-                <input matInput formControlName="date" [matDatepicker]="picker">
+                <input matInput  [matDatepicker]="picker">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                    <mat-datepicker-toggle matSuffix [for]="picker">
                       <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                     </mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-datepicker type="date" #picker></mat-datepicker>
           </mat-form-field>
           <div class="hourClass">
             <mat-form-field  appearance="fill">
             <mat-label >Select</mat-label>
-            <mat-select formControlName="hour" matNativeControl required>
+            <mat-select  matNativeControl required>
                
               <mat-option value="1">12:15</mat-option>
               <mat-option value="2">12:30</mat-option>
@@ -46,29 +93,25 @@
         </mat-tab>
 
 
-        <mat-tab label="Válaszd ki a helyed!">
-            
-          
-        </mat-tab>
-
-
         <mat-tab label="Foglalási adatok">
           <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
             <div class="inputs"><label for="email">Email: </label><input type="text" formControlName="email"></div>
-            <div class="inputs"><label for="phonenumber">Telefonszám: </label><input type="text" formControlName="phonenumber"></div>
+            <div class="inputs"><label for="phonenumber">Telefonszám: </label><input type="number" formControlName="phonenumber"></div>
         
             <div formGroupName="name">
                 <div class="inputs"><label for="lastname">Vezetéknév: </label><input type="text" formControlName="lastname"></div>
                 <div class="inputs"><label for="first">Keresztnév: </label><input type="text" formControlName="firstname"></div>
-    
-            </div>
 
+            </div>
+            <br>
+            <p>Adj meg egy foglalási kódot, amivel később vissza tudod nézni a foglalásod!</p>
+            <div class="inputs"><label for="password">Foglalási kód: </label><input type="text" formControlName="password"></div>
             <div>
-              <button mat-flat-button>Foglalás!</button>
+              <button type="submit"  mat-flat-button>Foglalás!</button>
             </div>
         </form>
         </mat-tab>
 
-      </mat-tab-group>
+      </mat-tab-group>-->
 
 </body>

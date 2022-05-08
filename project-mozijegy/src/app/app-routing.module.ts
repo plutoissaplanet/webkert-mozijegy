@@ -16,16 +16,13 @@ const routes: Routes = [
     redirectTo: '/main',
     pathMatch:'full'
   },
-  {
-    path: 'notfound',
-    loadChildren: () => import('./pages/notfound/notfound.module').then(m => m.NotfoundModule)
-  },
   { 
     path: 'reserved', loadChildren: () => import('./pages/reserved/reserved.module').then(m => m.ReservedModule)
    },
   { 
     path: 'reservation', loadChildren: () => import('./pages/reservation/reservation.module').then(m => m.ReservationModule) 
   },
+  { path: 'showreserved', loadChildren: () => import('./pages/showreserved/showreserved.module').then(m => m.ShowreservedModule) },
  
   {
     path: '**',

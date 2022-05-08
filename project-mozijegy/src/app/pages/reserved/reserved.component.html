@@ -3,13 +3,15 @@
     <h3>Sebaj! Könnyen lekérdezheted eddigi foglalásaidat a neved és telefonszáod megadásával.</h3>
 
     <div class="span">
-    <span><label for="name">Név: </label><input type="text" [formControl]='name'/></span>
+        <p> Próba adatok ha esetleg nem működne: proba@gmail.com, testcode</p>
+    <span><label for="email">Email: </label><input type="text" [formControl]='email'/></span>
     <br>
-    <span><label for="phone">Telefonszám: </label><input type="text"  [formControl]='phonenumber'/></span>
+    <span><label for="password">Foglalási kód: </label><input type="text"  [formControl]='password'/></span>
         <br>
     <span>
-        <button (click)="getReservation()">Lekérdezés!</button>
+        <button (click)="getTicket()">Lekérdezés!</button>
     </span>
+    
     </div>
 
 </body>

@@ -1,0 +1,28 @@
+WEBKERT - MOZIJEGY FOGLALÁS PROJEKT 
+
+kis segítség a pontozáshoz, hogy mi hol található meg, stb :)
+
+* Használt AngularMAterialok: 
+	 MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
+	MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+ MatCheckboxModule,
+    MatFormFieldModule,
+    MatSelectModule,
+	MatDividerModule,
+MatExpansionModule
+
+* Adatmodellek: src/app/shared/models : Reservation és Movies TS interfészek
+
+* Reszponzív felület: Menü
+
+* Attribútum direktíva: [ngStyle]: src/app/pages/reservation/reservation.component.html 2. sor
+
+* @Input, @Output: src/app/pages/menu/menu.component.ts 13-15-15 sorok
+
+* Angular Formok: reservation.component.html
+
+*routeok: /main, /films, /reserved, /reservation, /showreserved

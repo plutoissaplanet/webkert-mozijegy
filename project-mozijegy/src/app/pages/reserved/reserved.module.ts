@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReservedRoutingModule } from './reserved-routing.module';
 import { ReservedComponent } from './reserved.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReservedRoutingModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule
   ]
 })
 export class ReservedModule { }
